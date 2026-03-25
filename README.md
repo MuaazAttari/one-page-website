@@ -3,7 +3,7 @@
 A premium, modern, and interactive developer portfolio built using Next.js and Tailwind CSS.
 
 ## 🌐 Live Demo
-👉 https://your-vercel-link.vercel.app
+👉 https://one-page-website-psi.vercel.app/
 
 ---
 
@@ -27,3 +27,41 @@ A premium, modern, and interactive developer portfolio built using Next.js and T
 ---
 
 ## 📂 Project Structure
+
+/app
+/components
+/public
+
+
+---
+
+## 🚀 Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/MuaazAttari/one-page-website.git
+```
+
+Install dependencies:
+```bash
+npm install
+```
+
+Run development server:
+```bash
+npm run dev
+```
+
+## 👨‍💻 About Me
+
+I am a self-taught developer focused on Web Development and AI-based applications. I enjoy building real-world projects and continuously improving my skills.
+
+📞 Contact
+- GitHub: https://github.com/MuaazAttari
+- LinkedIn: https://www.linkedin.com/in/muhammad-muaaz-ansari/
+- Location: Hyderabad, Sindh, Pakistan
+
+### ⭐ Support
+
+If you like this project, consider giving it a star ⭐
