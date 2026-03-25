@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dark theme (default) */
+:root,
+.dark {
+  --background: #0a0a0a;
+  --background-alt: #121212;
+  --foreground: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-bg-hover: rgba(255, 255, 255, 0.08);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-border-hover: rgba(255, 255, 255, 0.2);
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --text-tertiary: #6b7280;
+  --primary: #00f0ff;
+  --accent: #8b5cf6;
+  --font-family-primary: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Light theme */
+.light {
+  --background: #f8fafc;
+  --background-alt: #ffffff;
+  --foreground: #1e293b;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-bg-hover: rgba(255, 255, 255, 0.95);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-border-hover: rgba(0, 0, 0, 0.15);
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-tertiary: #94a3b8;
+  --primary: #0891b2;
+  --accent: #7c3aed;
+  --font-family-primary: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-family-primary);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Animated grid background */
+  .animated-grid {
+    background-size: 50px 50px;
+    background-image: 
+      linear-gradient(to right, var(--card-border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--card-border) 1px, transparent 1px);
+    animation: gridFlow 20s linear infinite;
+  }
+
+  /* Glow effect utility */
+  .glow-primary {
+    box-shadow: 0 0 20px var(--primary-glow, rgba(0, 240, 255, 0.3)), 0 0 40px rgba(0, 240, 255, 0.1);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 20px var(--accent-glow, rgba(139, 92, 246, 0.3)), 0 0 40px rgba(139, 92, 246, 0.1);
+  }
+
+  .text-glow {
+    text-shadow: 
+      0 0 20px rgba(0, 240, 255, 0.5),
+      0 0 40px rgba(0, 240, 255, 0.3),
+      0 0 60px rgba(0, 240, 255, 0.2);
+  }
+
+  /* Light mode glow - softer and more visible */
+  .light .text-glow {
+    text-shadow: 
+      0 0 10px rgba(8, 145, 178, 0.4),
+      0 0 20px rgba(8, 145, 178, 0.3),
+      0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 3D tilt effect container */
+  .tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease-out;
+  }
+
+  .tilt-card:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) scale(1.02);
+  }
+
+  /* Gradient border animation */
+  .gradient-border {
+    position: relative;
+    background: var(--card-bg);
+    border-radius: 0.75rem;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, #00f0ff, #8b5cf6, #00f0ff);
+    background-size: 200% 200%;
+    border-radius: 0.75rem;
+    z-index: -1;
+    animation: gradientShift 3s ease infinite;
+    opacity: 0.5;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes gridFlow {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Animation delays */
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-3000 {
+    animation-delay: 3s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
