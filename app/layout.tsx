@@ -4,7 +4,7 @@ import { LoadingProvider } from '@/lib/loading';
 import ScrollProgress from '@/components/ScrollProgress';
 import ScrollButtons from '@/components/ScrollButtons';
 import AIChatWidget from '@/components/AIChatWidget';
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
   title: 'Muhammad Muaaz Ansari | Web Developer & AI Solutions',
