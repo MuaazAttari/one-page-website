@@ -184,10 +184,10 @@ const Terminal = () => {
               <div className="space-y-4">
                 {/* Current command */}
                 <div>
-                  <div className="flex items-center gap-2 text-green-400">
+                  <div className="flex items-center gap-2 text-green-500 dark:text-green-400">
                     <span>➜</span>
-                    <span className="text-cyan-400">~</span>
-                    <span>{displayedText}</span>
+                    <span className="text-cyan-600 dark:text-cyan-400">~</span>
+                    <span className="text-primary font-medium">{displayedText}</span>
                     {isTyping && (
                       <motion.span
                         className="w-2 h-5 bg-primary inline-block"
@@ -196,18 +196,18 @@ const Terminal = () => {
                       />
                     )}
                   </div>
-                  
+
                   {/* Output */}
                   {showOutput && outputLines.length > 0 && (
                     <motion.div
-                      className="mt-2 space-y-1 text-gray-400"
+                      className="mt-2 space-y-1"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                     >
                       {outputLines.map((line, index) => (
                         <motion.div
                           key={index}
-                          className="text-gray-300"
+                          className="text-secondary dark:text-gray-300 font-medium"
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.1 }}
@@ -221,9 +221,9 @@ const Terminal = () => {
 
                 {/* Blinking cursor for next command */}
                 {!isTyping && showOutput && outputLines.length === currentCommand.output.length && (
-                  <div className="flex items-center gap-2 text-green-400 opacity-50">
+                  <div className="flex items-center gap-2 text-green-500 dark:text-green-400 opacity-50">
                     <span>➜</span>
-                    <span className="text-cyan-400">~</span>
+                    <span className="text-cyan-600 dark:text-cyan-400">~</span>
                     <motion.span
                       className="w-2 h-5 bg-primary inline-block"
                       animate={{ opacity: [1, 0] }}
@@ -259,7 +259,7 @@ const Terminal = () => {
                 className={`px-4 py-2 rounded-lg text-sm font-mono transition-all duration-300 ${
                   currentCommandIndex === index
                     ? 'bg-primary text-black shadow-lg shadow-primary/30'
-                    : 'bg-card-bg text-secondary hover:bg-card-bg-hover hover:text-primary border border-card-border'
+                    : 'bg-card-bg text-primary hover:bg-card-bg-hover hover:text-primary border border-card-border'
                 }`}
               >
                 {cmd.command}

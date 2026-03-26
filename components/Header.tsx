@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
@@ -26,6 +26,23 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Prevent hydration mismatch by waiting for client-side mount
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -36,17 +53,16 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
+      suppressHydrationWarning
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <a href="#hero" className="text-xl font-bold">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Muaaz
             </span>
           </a>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <a
@@ -59,11 +75,8 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Right side: Theme toggle + Mobile menu */}
           <div className="flex items-center gap-3">
             <ThemeToggle />
-
-            {/* Mobile menu button */}
             <button
               className="md:hidden p-2 text-secondary hover:text-primary"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -75,28 +88,67 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {isMobileMenuOpen && (
-        <motion.div
-          className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-card-border py-4"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-        >
-          <nav className="container mx-auto px-4 flex flex-col gap-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="px-4 py-3 text-secondary hover:text-primary rounded-lg hover:bg-card-bg transition-all duration-300"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
-          </nav>
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* Overlay with backdrop blur */}
+            <motion.div
+              className="fixed inset-0 bg-black/60 backdrop-blur-md z-40"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-hidden="true"
+            />
+
+            {/* Slide-in menu panel */}
+            <motion.div
+              className="fixed top-0 right-0 w-[85%] sm:w-[320px] h-full bg-background/95 backdrop-blur-2xl border-l border-card-border z-50 p-6 safe-area-inset-right shadow-2xl"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile navigation menu"
+            >
+              <div className="flex items-center justify-between mb-8 pb-4 border-b border-card-border">
+                <h2 className="text-xl font-bold text-primary">Menu</h2>
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="p-3 -mr-2 text-secondary hover:text-primary hover:bg-card-bg rounded-lg transition-all duration-300 touch-manipulation"
+                  aria-label="Close menu"
+                >
+                  <X size={28} />
+                </button>
+              </div>
+
+              <nav className="flex flex-col gap-1 flex-1 overflow-y-auto">
+                {navLinks.map((link, index) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="group px-4 py-4 text-base font-medium text-secondary hover:text-primary hover:bg-card-bg rounded-lg transition-all duration-300 flex items-center gap-3"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <span className="w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                    {link.name}
+                  </a>
+                ))}
+              </nav>
+
+              {/* Theme toggle at bottom */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 pt-4 border-t border-card-border bg-background/50 backdrop-blur-sm">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-secondary font-medium">Theme</span>
+                  <ThemeToggle />
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 };
