@@ -9,6 +9,7 @@ import { Analytics } from '@vercel/analytics/react';
 export const metadata = {
   title: 'Muhammad Muaaz Ansari | Web Developer & AI Solutions',
   description: 'I specialize in building modern web applications and AI-powered solutions using Next.js and Python.',
+  metadataBase: new URL('https://muhammadmuaazansari.vercel.app'),
   keywords: ['Web Developer', 'AI Engineer', 'Next.js', 'Python', 'Machine Learning', 'Portfolio'],
   authors: [{ name: 'Muhammad Muaaz Ansari' }],
   creator: 'Muhammad Muaaz Ansari',

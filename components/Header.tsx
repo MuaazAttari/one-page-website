@@ -93,18 +93,24 @@ const Header = () => {
           <>
             {/* Overlay with backdrop blur */}
             <motion.div
-              className="fixed inset-0 bg-black/60 backdrop-blur-md z-40"
+              className="fixed inset-0 bg-black/70 backdrop-blur-md z-40"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setIsMobileMenuOpen(false)}
               aria-hidden="true"
+              style={{ backdropFilter: 'blur(12px)' }}
             />
 
             {/* Slide-in menu panel */}
             <motion.div
-              className="fixed top-0 right-0 w-[85%] sm:w-[320px] h-full bg-background/95 backdrop-blur-2xl border-l border-card-border z-50 p-6 safe-area-inset-right shadow-2xl"
+              className="fixed top-0 right-0 w-[85%] sm:w-[320px] h-full z-50 p-6 safe-area-inset-right shadow-2xl border-l"
+              style={{
+                background: 'var(--card-bg)',
+                backdropFilter: 'blur(24px)',
+                borderColor: 'var(--card-border)',
+              }}
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
@@ -113,12 +119,13 @@ const Header = () => {
               aria-modal="true"
               aria-label="Mobile navigation menu"
             >
-              <div className="flex items-center justify-between mb-8 pb-4 border-b border-card-border">
-                <h2 className="text-xl font-bold text-primary">Menu</h2>
+              <div className="flex items-center justify-between mb-8 pb-4 border-b" style={{ borderColor: 'var(--card-border)' }}>
+                <h2 className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>Menu</h2>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-3 -mr-2 text-secondary hover:text-primary hover:bg-card-bg rounded-lg transition-all duration-300 touch-manipulation"
+                  className="p-3 -mr-2 hover:bg-card-bg/50 rounded-lg transition-all duration-300 touch-manipulation"
                   aria-label="Close menu"
+                  style={{ color: 'var(--text-secondary)' }}
                 >
                   <X size={28} />
                 </button>
@@ -129,8 +136,12 @@ const Header = () => {
                   <a
                     key={link.name}
                     href={link.href}
-                    className="group px-4 py-4 text-base font-medium text-secondary hover:text-primary hover:bg-card-bg rounded-lg transition-all duration-300 flex items-center gap-3"
+                    className="group px-4 py-4 text-base font-medium rounded-lg transition-all duration-300 flex items-center gap-3"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    style={{ 
+                      color: 'var(--text-primary)',
+                      backgroundColor: 'transparent',
+                    }}
                   >
                     <span className="w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.name}
@@ -139,9 +150,16 @@ const Header = () => {
               </nav>
 
               {/* Theme toggle at bottom */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 pt-4 border-t border-card-border bg-background/50 backdrop-blur-sm">
+              <div 
+                className="absolute bottom-0 left-0 right-0 p-6 pt-4 border-t"
+                style={{ 
+                  borderColor: 'var(--card-border)',
+                  background: 'var(--card-bg)',
+                  backdropFilter: 'blur(4px)',
+                }}
+              >
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-secondary font-medium">Theme</span>
+                  <span className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>Theme</span>
                   <ThemeToggle />
                 </div>
               </div>

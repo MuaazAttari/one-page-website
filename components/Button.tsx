@@ -30,7 +30,7 @@ const Button: React.FC<ButtonProps> = ({
   // Variant classes - Updated for theme support
   const variantClasses = {
     primary: 'bg-gradient-to-r from-primary to-cyan-600 text-black hover:from-primary hover:to-cyan-500 shadow-lg hover:shadow-primary/50',
-    secondary: 'bg-gray-800 dark:bg-gray-800 text-white hover:bg-gray-700 dark:hover:bg-gray-600 border border-gray-700 dark:border-gray-600',
+    secondary: 'bg-gray-800 dark:bg-gray-800 text-foreground hover:bg-gray-700 dark:hover:bg-gray-600 border border-gray-700 dark:border-gray-600',
     outline: 'border-2 border-primary/50 text-primary hover:bg-primary/10 hover:border-primary',
     ghost: 'bg-transparent text-secondary hover:bg-card-bg hover:text-primary',
   }[variant];
