@@ -9,20 +9,20 @@ import { Analytics } from '@vercel/analytics/next';
 export const metadata = {
   title: 'Muhammad Muaaz Ansari | Web Developer & AI Solutions',
   description: 'I specialize in building modern web applications and AI-powered solutions using Next.js and Python.',
-  metadataBase: new URL('https://muhammadmuaazansari.vercel.app'),
+  metadataBase: new URL('https://one-page-website-psi.vercel.app'),
   keywords: ['Web Developer', 'AI Engineer', 'Next.js', 'Python', 'Machine Learning', 'Portfolio'],
   authors: [{ name: 'Muhammad Muaaz Ansari' }],
   creator: 'Muhammad Muaaz Ansari',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://muhammadmuaazansari.vercel.app',
+    url: 'https://one-page-website-psi.vercel.app',
     title: 'Muhammad Muaaz Ansari | Web Developer & AI Solutions',
     description: 'I specialize in building modern web applications and AI-powered solutions using Next.js and Python.',
     siteName: 'Muhammad Muaaz Ansari Portfolio',
     images: [
       {
-        url: '/opengraph-image.png',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Muhammad Muaaz Ansari - Web Developer & AI Solutions Builder',
@@ -34,6 +34,7 @@ export const metadata = {
     title: 'Muhammad Muaaz Ansari | Web Developer & AI Solutions',
     description: 'I specialize in building modern web applications and AI-powered solutions using Next.js and Python.',
     creator: '@MuaazAttari',
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,

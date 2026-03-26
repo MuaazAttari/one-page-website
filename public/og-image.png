@@ -1,0 +1,55 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="text" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00f0ff"/>
+      <stop offset="50%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Name -->
+  <text x="600" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" font-weight="800" fill="url(#text)">
+    Muhammad Muaaz Ansari
+  </text>
+  
+  <!-- Title -->
+  <text x="600" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#9ca3af">
+    Web Developer &amp; AI Solutions Builder
+  </text>
+  
+  <!-- Tech Stack Boxes -->
+  <g transform="translate(600, 400)">
+    <!-- Next.js -->
+    <rect x="-480" y="-40" width="200" height="80" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(0,240,255,0.3)" stroke-width="2"/>
+    <text x="-380" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="600" fill="#00f0ff">Next.js</text>
+    
+    <!-- Python -->
+    <rect x="-260" y="-40" width="200" height="80" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(0,240,255,0.3)" stroke-width="2"/>
+    <text x="-160" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="600" fill="#00f0ff">Python</text>
+    
+    <!-- AI/ML -->
+    <rect x="-40" y="-40" width="200" height="80" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(0,240,255,0.3)" stroke-width="2"/>
+    <text x="60" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="600" fill="#00f0ff">AI/ML</text>
+    
+    <!-- Tailwind -->
+    <rect x="180" y="-40" width="200" height="80" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(0,240,255,0.3)" stroke-width="2"/>
+    <text x="280" y="15" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="600" fill="#00f0ff">Tailwind</text>
+  </g>
+  
+  <!-- GitHub -->
+  <text x="600" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#6b7280">
+    github.com/MuaazAttari
+  </text>
+  
+  <!-- Decorative Elements -->
+  <circle cx="100" cy="100" r="150" fill="rgba(0,240,255,0.1)"/>
+  <circle cx="1100" cy="530" r="200" fill="rgba(139,92,246,0.1)"/>
+</svg>
