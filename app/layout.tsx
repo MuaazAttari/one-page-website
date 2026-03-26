@@ -1,10 +1,43 @@
 import './globals.css';
 import { ThemeProvider } from '@/lib/theme';
 import { LoadingProvider } from '@/lib/loading';
+import ScrollProgress from '@/components/ScrollProgress';
+import ScrollButtons from '@/components/ScrollButtons';
+import AIChatWidget from '@/components/AIChatWidget';
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata = {
   title: 'Muhammad Muaaz Ansari | Web Developer & AI Solutions',
   description: 'I specialize in building modern web applications and AI-powered solutions using Next.js and Python.',
+  keywords: ['Web Developer', 'AI Engineer', 'Next.js', 'Python', 'Machine Learning', 'Portfolio'],
+  authors: [{ name: 'Muhammad Muaaz Ansari' }],
+  creator: 'Muhammad Muaaz Ansari',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://muhammadmuaazansari.vercel.app',
+    title: 'Muhammad Muaaz Ansari | Web Developer & AI Solutions',
+    description: 'I specialize in building modern web applications and AI-powered solutions using Next.js and Python.',
+    siteName: 'Muhammad Muaaz Ansari Portfolio',
+    images: [
+      {
+        url: '/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Muhammad Muaaz Ansari - Web Developer & AI Solutions Builder',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Muhammad Muaaz Ansari | Web Developer & AI Solutions',
+    description: 'I specialize in building modern web applications and AI-powered solutions using Next.js and Python.',
+    creator: '@MuaazAttari',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -17,7 +50,11 @@ export default function RootLayout({
       <body className="bg-background text-foreground font-sans antialiased">
         <LoadingProvider>
           <ThemeProvider>
+            <ScrollProgress />
+            <ScrollButtons />
+            <AIChatWidget />
             {children}
+            <Analytics />
           </ThemeProvider>
         </LoadingProvider>
       </body>

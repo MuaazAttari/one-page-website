@@ -131,35 +131,35 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative py-24 bg-background overflow-hidden"
+      className="relative py-16 md:py-24 bg-background overflow-hidden"
       aria-label="Contact section"
     >
       {/* Background effects */}
       <div className="absolute inset-0 animated-grid opacity-30" aria-hidden="true" />
-      
+
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl"
         aria-hidden="true"
       />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Section header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeInUp}
         >
           <motion.span
-            className="inline-block px-4 py-2 bg-card-bg border border-card-border rounded-full text-sm text-primary mb-4"
+            className="inline-block px-4 py-2 bg-card-bg border border-card-border rounded-full text-xs sm:text-sm text-primary mb-4"
             whileHover={{ scale: 1.05 }}
           >
             📬 Get In Touch
           </motion.span>
-          
+
           <motion.h2
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -170,9 +170,9 @@ const Contact = () => {
               Together
             </span>
           </motion.h2>
-          
+
           <motion.p
-            className="text-secondary max-w-2xl mx-auto text-lg"
+            className="text-secondary max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -182,7 +182,7 @@ const Contact = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
           {/* Left: Contact methods */}
           <motion.div
             initial="hidden"
@@ -190,24 +190,24 @@ const Contact = () => {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <h3 className="text-2xl font-bold text-primary mb-6">
+            <h3 className="text-xl md:text-2xl font-bold text-primary mb-4 md:mb-6">
               Connect With Me
             </h3>
-            
-            <p className="text-secondary mb-8">
-              I'm always open to discussing new projects, creative ideas, or 
-              opportunities to be part of your vision. Feel free to reach out 
+
+            <p className="text-secondary text-sm md:text-base mb-6 md:mb-8">
+              I'm always open to discussing new projects, creative ideas, or
+              opportunities to be part of your vision. Feel free to reach out
               through any of the channels below.
             </p>
 
-            <div className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4">
               {contactMethods.map((method, index) => (
                 <motion.a
                   key={method.label}
                   href={method.href}
                   target={method.href.startsWith('http') ? '_blank' : undefined}
                   rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="group flex items-center gap-4 p-4 bg-card-bg border border-card-border rounded-xl hover:border-card-border-hover transition-all duration-300"
+                  className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-card-bg border border-card-border rounded-xl hover:border-card-border-hover transition-all duration-300"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -215,33 +215,38 @@ const Contact = () => {
                   whileHover={{ x: 5, scale: 1.02 }}
                 >
                   {/* Icon container */}
-                  <div className={`relative p-3 rounded-xl bg-gradient-to-br ${method.gradient}`}>
-                    <method.icon className="w-6 h-6 text-white" />
+                  <div className={`relative p-2.5 sm:p-3 rounded-xl bg-gradient-to-br ${method.gradient} flex-shrink-0`}>
+                    <method.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
-                  
+
                   {/* Content */}
-                  <div className="flex-1">
-                    <div className="text-secondary text-sm">{method.label}</div>
-                    <div className="text-primary font-medium group-hover:text-primary transition-colors">
+                  <div className="flex-1 min-w-0">
+                    <div className="text-xs sm:text-sm text-secondary truncate">{method.label}</div>
+                    <div className="text-sm sm:text-base text-primary font-medium group-hover:text-primary transition-colors truncate">
                       {method.value}
                     </div>
                   </div>
-                  
+
                   {/* Arrow */}
-                  <ExternalLink className="w-5 h-5 text-secondary group-hover:text-primary transition-colors" />
+                  <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-secondary group-hover:text-primary transition-colors flex-shrink-0" />
                 </motion.a>
               ))}
             </div>
 
             {/* CTA */}
             <motion.div
-              className="mt-10"
+              className="mt-8 md:mt-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              <Button variant="primary" size="lg" className="group" href="mailto:muhammadmuaazansari92@gmail.com">
+              <Button 
+                variant="primary" 
+                size="lg" 
+                className="group w-full sm:w-auto" 
+                href="mailto:muhammadmuaazansari92@gmail.com"
+              >
                 <Send className="w-5 h-5 mr-2 group-hover:translate-x-1 transition-transform" />
                 Send a Message
               </Button>
@@ -258,14 +263,14 @@ const Contact = () => {
             <div className="relative">
               {/* Glow effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-2xl blur-xl opacity-20" />
-              
+
               {/* Form container */}
-              <div className="relative bg-card-bg border border-card-border rounded-2xl p-8 backdrop-blur-sm">
-                <h3 className="text-2xl font-bold text-primary mb-6">
+              <div className="relative bg-card-bg border border-card-border rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                <h3 className="text-xl md:text-2xl font-bold text-primary mb-4 md:mb-6">
                   Send a Message
                 </h3>
 
-                <form className="space-y-6" onSubmit={handleSubmit}>
+                <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                   {/* Name */}
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
@@ -273,7 +278,7 @@ const Contact = () => {
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
                   >
-                    <label htmlFor="name" className="block text-sm text-secondary mb-2">
+                    <label htmlFor="name" className="block text-xs sm:text-sm text-secondary mb-1.5 sm:mb-2">
                       Your Name
                     </label>
                     <input
@@ -286,7 +291,7 @@ const Contact = () => {
                       required
                       minLength={2}
                       disabled={isSubmitting}
-                      className="w-full px-4 py-3 bg-background border border-card-border rounded-xl text-primary placeholder-secondary/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors disabled:opacity-50"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-background border border-card-border rounded-lg sm:rounded-xl text-sm sm:text-base text-primary placeholder-secondary/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors disabled:opacity-50"
                     />
                   </motion.div>
 
@@ -297,7 +302,7 @@ const Contact = () => {
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
                   >
-                    <label htmlFor="email" className="block text-sm text-secondary mb-2">
+                    <label htmlFor="email" className="block text-xs sm:text-sm text-secondary mb-1.5 sm:mb-2">
                       Your Email
                     </label>
                     <input
@@ -309,7 +314,7 @@ const Contact = () => {
                       placeholder="john@example.com"
                       required
                       disabled={isSubmitting}
-                      className="w-full px-4 py-3 bg-background border border-card-border rounded-xl text-primary placeholder-secondary/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors disabled:opacity-50"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-background border border-card-border rounded-lg sm:rounded-xl text-sm sm:text-base text-primary placeholder-secondary/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors disabled:opacity-50"
                     />
                   </motion.div>
 
@@ -320,20 +325,20 @@ const Contact = () => {
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 }}
                   >
-                    <label htmlFor="message" className="block text-sm text-secondary mb-2">
+                    <label htmlFor="message" className="block text-xs sm:text-sm text-secondary mb-1.5 sm:mb-2">
                       Your Message
                     </label>
                     <textarea
                       id="message"
                       name="message"
-                      rows={5}
+                      rows={4}
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Tell me about your project..."
                       required
                       minLength={10}
                       disabled={isSubmitting}
-                      className="w-full px-4 py-3 bg-background border border-card-border rounded-xl text-primary placeholder-secondary/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none disabled:opacity-50"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-background border border-card-border rounded-lg sm:rounded-xl text-sm sm:text-base text-primary placeholder-secondary/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none disabled:opacity-50"
                     />
                   </motion.div>
 

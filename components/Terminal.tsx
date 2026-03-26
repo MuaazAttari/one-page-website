@@ -166,9 +166,9 @@ const Terminal = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          <div className="relative bg-gray-950 border border-white/10 rounded-xl overflow-hidden shadow-2xl glow-primary">
+          <div className="relative bg-card-bg border border-card-border rounded-xl overflow-hidden shadow-2xl">
             {/* Terminal header */}
-            <div className="flex items-center justify-between px-4 py-3 bg-gray-900/80 border-b border-white/10">
+            <div className="flex items-center justify-between px-4 py-3 bg-background border-b border-card-border">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-red-500" />
                 <div className="w-3 h-3 rounded-full bg-yellow-500" />
@@ -259,7 +259,7 @@ const Terminal = () => {
                 className={`px-4 py-2 rounded-lg text-sm font-mono transition-all duration-300 ${
                   currentCommandIndex === index
                     ? 'bg-primary text-black shadow-lg shadow-primary/30'
-                    : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/10'
+                    : 'bg-card-bg text-secondary hover:bg-card-bg-hover hover:text-primary border border-card-border'
                 }`}
               >
                 {cmd.command}

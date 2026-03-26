@@ -48,7 +48,7 @@ const Toast: React.FC<ToastProps> = ({ message, type, isOpen, onClose }) => {
           
           <button
             onClick={onClose}
-            className="ml-auto p-1 hover:bg-white/10 rounded-lg transition-colors"
+            className="ml-auto p-1 hover:bg-card-bg-hover rounded-lg transition-colors"
             aria-label="Close notification"
           >
             <X size={16} className={type === 'success' ? 'text-green-400' : 'text-red-400'} />

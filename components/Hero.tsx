@@ -402,12 +402,12 @@ const Hero = () => {
 
               {/* Rotating ring elements */}
               <motion.div
-                className="absolute -inset-8 border border-dashed border-white/10 rounded-full"
+                className="absolute -inset-8 border border-dashed border-card-border rounded-full"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
               />
               <motion.div
-                className="absolute -inset-12 border border-dotted border-white/5 rounded-full"
+                className="absolute -inset-12 border border-dotted border-card-border rounded-full"
                 animate={{ rotate: -360 }}
                 transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
               />
